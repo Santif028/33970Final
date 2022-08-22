@@ -1,0 +1,48 @@
+/* RESET 
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}*/
+
+/* Estilos del body */
+
+body{
+    display: grid;
+    justify-content: center;
+    
+}
+
+/* Estilos del .grid */
+.grid {
+    width: 600px;
+    height: 600px;
+    border: solid black 2px;
+    border-radius: 2px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid div{
+    height: 40px;
+    width: 40px;
+}
+
+.invasor {
+    background-color: slateblue;
+    border-radius: 20px;
+}
+
+.defensor {
+    background-color: green;
+}
+
+.laser {
+    border-radius: 20px;
+    background-color: orange;
+}
+
+.explosion{
+    background-color: red;
+}
