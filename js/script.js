@@ -23,9 +23,9 @@ const alienInvaders = [
 
 const mostrarInvasores = () => {
     for (let i = 0; i < alienInvaders.length; i++) {
-        if(!invasoresDerrotados.includes(i)){
+        if (!invasoresDerrotados.includes(i)) {
             cuadrados[alienInvaders[i]].classList.add("invasor")
-        } 
+        }
     }
 }
 
@@ -90,7 +90,8 @@ const moverInvasores = () => {
             clearInterval(idInvasores)
         }
     }
-    if(invasoresDerrotados.length === alienInvaders.length){
+
+    if (invasoresDerrotados.length === alienInvaders.length) {
         mostrarResultados.innerHTML = `YOU WIN YOUR RESULTS WERE: ${resultados}`
         clearInterval(idInvasores)
     }
@@ -102,10 +103,11 @@ const disparar = (e) => {
     let idLaser
     let indiceActualLaser = indiceActualDefensor
     function moverLaser() {
+        if (!cuadrados[indiceActualLaser]) return
         cuadrados[indiceActualLaser].classList.remove("laser")
         indiceActualLaser -= ancho
+        if (!cuadrados[indiceActualLaser]) return;
         cuadrados[indiceActualLaser].classList.add("laser")
-
         if (cuadrados[indiceActualLaser].classList.contains("invasor")) {
             cuadrados[indiceActualLaser].classList.remove("laser")
             cuadrados[indiceActualLaser].classList.remove("invasor")
@@ -116,7 +118,7 @@ const disparar = (e) => {
 
             const invasorDerrotado = alienInvaders.indexOf(indiceActualLaser)
             invasoresDerrotados.push(invasorDerrotado)
-            resultados ++
+            resultados++
             mostrarResultados.innerHTML = resultados
         }
     }
