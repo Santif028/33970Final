@@ -1,5 +1,9 @@
+//VARIABLES
 const grid = document.querySelector(".grid")
 const mostrarResultados = document.querySelector(".resultados")
+const idForm = document.getElementById("idForm")
+const botonUsers = document.getElementById("botonUsers")
+const divUsers = document.getElementById("divUsers")
 let indiceActualDefensor = 202
 let ancho = 15
 let direccion = 1
@@ -8,19 +12,45 @@ let direccionDerecha = true
 let invasoresDerrotados = []
 let resultados = 0
 
+//CONSTRUCTOR PARA GUARDAR LAS PUNTUACIONES
+class Usuario {
+    constructor (nombre, puntuacion) {
+      this.nombre = nombre
+      this.puntuacion = puntuacion
+    }
+}
+
+const usuarios = []
+
+//ADDEVENTLISTENER PARA INICIAR EL JUEGO UNA VEZ DEN SUBMIT AL FORMULARIO
+idForm.addEventListener("submit", (e, resultados) => {
+    e.preventDefault()
+    const datForm = new FormData(e.target)
+    const user = new Usuario(datForm.get("nombre"), resultados)
+    usuarios.push(user)
+    localStorage.setItem('usuarios', JSON.stringify(usuarios))
+    idForm.reset()
+    mostrarInvasores()
+    idInvasores = setInterval(moverInvasores, 500)
+})
+
+//CICLO FOR PARA CREAR LOS 240 DIVS DONDE SE VA A DESARROLLAR EL JUEGO
 for (let i = 0; i < 240; i++) {
     const cuadrado = document.createElement("div")
     grid.appendChild(cuadrado)
 }
 
+//ARRAY DE TODOS LOS DIVS CREADOS PREVIAMENTE
 const cuadrados = Array.from(document.querySelectorAll(".grid div"))
 
+//ARRAY CON LOS INDICES EN QUE SE POSICIONARAN LOS INVASORES
 const alienInvaders = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
     15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
     30, 31, 32, 33, 34, 35, 36, 37, 38, 39
 ]
 
+//FUNCIONES
 const mostrarInvasores = () => {
     for (let i = 0; i < alienInvaders.length; i++) {
         if (!invasoresDerrotados.includes(i)) {
@@ -125,27 +155,3 @@ const disparar = (e) => {
 }
 
 document.addEventListener("keydown", disparar)
-
-class Usuario {
-    constructor (nombre, puntuacion) {
-      this.nombre = nombre
-      this.puntuacion = puntuacion
-    }
-}
-
-const usuarios = []
-
-const idForm = document.getElementById("idForm")
-const botonUsers = document.getElementById("botonUsers")
-const divUsers = document.getElementById("divUsers")
-
-idForm.addEventListener("submit", (e, resultados) => {
-    e.preventDefault()
-    const datForm = new FormData(e.target)
-    const user = new Usuario(datForm.get("nombre"), resultados)
-    usuarios.push(user)
-    localStorage.setItem('usuarios', JSON.stringify(usuarios))
-    idForm.reset()
-    mostrarInvasores()
-    idInvasores = setInterval(moverInvasores, 500)
-})
