@@ -14,6 +14,9 @@ body{
     
 }
 
+h1 {
+    text-align: center;
+}
 /* Estilos del .grid */
 .grid {
     width: 600px;

@@ -29,8 +29,6 @@ const mostrarInvasores = () => {
     }
 }
 
-mostrarInvasores()
-
 const eliminarInvasores = () => {
     for (let i = 0; i < alienInvaders.length; i++) {
         cuadrados[alienInvaders[i]].classList.remove("invasor")
@@ -97,8 +95,6 @@ const moverInvasores = () => {
     }
 }
 
-idInvasores = setInterval(moverInvasores, 500)
-
 const disparar = (e) => {
     let idLaser
     let indiceActualLaser = indiceActualDefensor
@@ -129,3 +125,27 @@ const disparar = (e) => {
 }
 
 document.addEventListener("keydown", disparar)
+
+class Usuario {
+    constructor (nombre, puntuacion) {
+      this.nombre = nombre
+      this.puntuacion = puntuacion
+    }
+}
+
+const usuarios = []
+
+const idForm = document.getElementById("idForm")
+const botonUsers = document.getElementById("botonUsers")
+const divUsers = document.getElementById("divUsers")
+
+idForm.addEventListener("submit", (e, resultados) => {
+    e.preventDefault()
+    const datForm = new FormData(e.target)
+    const user = new Usuario(datForm.get("nombre"), resultados)
+    usuarios.push(user)
+    localStorage.setItem('usuarios', JSON.stringify(usuarios))
+    idForm.reset()
+    mostrarInvasores()
+    idInvasores = setInterval(moverInvasores, 500)
+})
