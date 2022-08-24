@@ -14,16 +14,16 @@ let resultados = 0
 
 //CONSTRUCTOR PARA GUARDAR LAS PUNTUACIONES
 class Usuario {
-    constructor (nombre, puntuacion) {
-      this.nombre = nombre
-      this.puntuacion = puntuacion
+    constructor(nombre, puntuacion) {
+        this.nombre = nombre
+        this.puntuacion = puntuacion
     }
 }
 
 const usuarios = []
 
 //ADDEVENTLISTENER PARA INICIAR EL JUEGO UNA VEZ DEN SUBMIT AL FORMULARIO
-idForm.addEventListener("submit", (e, resultados) => {
+idForm.addEventListener("submit", (e) => {
     e.preventDefault()
     const datForm = new FormData(e.target)
     const user = new Usuario(datForm.get("nombre"), resultados)
