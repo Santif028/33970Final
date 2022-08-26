@@ -27,6 +27,8 @@ idForm.addEventListener("submit", (e) => {
     e.preventDefault()
     const datForm = new FormData(e.target)
     const user = new Usuario(datForm.get("nombre"), resultados)
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || []
+    indiceDelUsuario = usuarios.length
     usuarios.push(user)
     localStorage.setItem('usuarios', JSON.stringify(usuarios))
     idForm.reset()
@@ -108,6 +110,9 @@ const moverInvasores = () => {
     mostrarInvasores()
 
     if (cuadrados[indiceActualDefensor].classList.contains("invasor", "defensor")) {
+        const usuarios = JSON.parse(localStorage.getItem("usuarios")) || []
+        usuarios[indiceDelUsuario].puntuacion = resultados
+        localStorage.setItem('usuarios', JSON.stringify(usuarios))
         mostrarResultados.innerHTML = "GAME OVER"
         clearInterval(idInvasores)
     }
