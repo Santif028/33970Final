@@ -5,20 +5,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link de Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
     <!-- Link de CSS -->
     <link rel="stylesheet" href="css/main.css">
     <title>Space Invaders</title>
 </head>
 
 <body>
-    <h1 class="resultados">0</h1>
-    <form id="idForm" action="submit">
-        <label for="name">Ingresa tu nombre:</label>
-        <input type="text" name="nombre">
-        <button id="botonUsers" type="submit">Aceptar</button>
-    </form>
-    <div id="divUsers"></div>
-    <div class="grid"></div>
+    <main id="principal">
+        <h1 class="resultados">0</h1>
+        <form id="idForm" action="submit">
+            <label for="name">Ingresa tu nombre:</label>
+            <input type="text" name="nombre">
+            <button id="botonUsers" type="submit">Aceptar</button>
+        </form>
+        <div id="divUsers"></div>
+        <div class="grid"></div>
+    </main>
+    <div id="particles-js"></div>
+    <script src="js/lib/particles.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 
