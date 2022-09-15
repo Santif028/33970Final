@@ -28,7 +28,8 @@ body{
 #principal{
     width: 100vw;
     grid-template-areas: "resultados resultados resultados"
-                         "puntuaciones juego juego ";
+                         "puntuaciones juego juego "
+                         "instrucciones instrucciones instrucciones";
 
     justify-content: center;
     align-self: center;
@@ -125,4 +126,23 @@ h1 {
 .explosion{
     background-image: url(../img/explosion.png);
     background-size: 40px;
+}
+
+/* Estilos de las instrucciones */
+
+.instrucciones{
+    grid-area: instrucciones;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.instrucciones img{
+    width: 3rem;
+}
+
+.instrucciones p{
+    margin: 0;
+    font-size: 2rem;
 }
