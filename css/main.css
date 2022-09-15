@@ -3,14 +3,17 @@
 *{
     padding: 0;
     margin: 0;
+    box-sizing: content-box;
+    font-family: 'Michroma', sans-serif;
 }
 
 /* Estilos del body */
 
 body{
+    height: 100vh;
     display: grid;
     justify-content: center;
-    font-family: 'Michroma', sans-serif;
+    align-items: center;
 }
 
 #particles-js{
@@ -23,7 +26,10 @@ body{
 } 
 
 #principal{
-    display: grid;
+    width: 100vw;
+    grid-template-areas: "resultados resultados resultados"
+                         "puntuaciones juego juego ";
+
     justify-content: center;
     align-self: center;
     margin: 10px;
@@ -31,19 +37,66 @@ body{
     color: white;
 }
 
+
+/* Estilos del Formulario */
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    font-size: 1.5rem;
+}
+form input {
+    text-align: center;
+    background: transparent;
+    border-radius: 5px;
+    border: solid white 1px;
+    color: white;
+    height: 25px;
+    width: 285px;
+}
+
+form button {
+    height: 50px;
+    width: fit-content;
+    color: white;
+    font-size: 1.7rem;
+    text-align: center;
+    border-radius: 5px;
+    background: rgb(255, 1, 1);
+}
+
+/* Estilos del Juego */
+#gridJuego{
+    display: none;
+}
+
 h1 {
+    grid-area: resultados;
     text-align: center;
     font-size: 1.5rem;
 }
 
-form{
-    font-size: 1.2rem;
+#divPuntuaciones{
+    grid-area: puntuaciones;
+    height: 600px;
+    width: fit-content;
+    overflow: scroll;
+    align-self: flex-start;
+    border: solid rgb(255, 255, 255) 5px;
+    border-radius: 2px;
 }
-/* Estilos del .grid */
+
+#divPuntuaciones ul li {
+    color: white;
+    background-color: transparent;
+}
+
 .grid {
+    grid-area: juego;
     width: 600px;
     height: 600px;
-    border: solid black 2px;
+    border: solid rgb(255, 255, 255) 5px;
     border-radius: 2px;
     display: flex;
     flex-wrap: wrap;
@@ -55,8 +108,8 @@ form{
 }
 
 .invasor {
-    background-color: slateblue;
-    border-radius: 20px;
+    background-image:url(../img/invasor.png);
+    background-size: 40px;
 }
 
 .defensor {
@@ -70,5 +123,6 @@ form{
 }
 
 .explosion{
-    background-color: red;
+    background-image: url(../img/explosion.png);
+    background-size: 40px;
 }
